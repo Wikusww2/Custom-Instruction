@@ -11,6 +11,7 @@
 ## React artifacts
 
 When creating React artifacts:
+- load `.agents/skills/frontend-design/SKILL.md` whenever the task involves UI, layout, styling, interaction, visual polish, or design happening in code,
 - default export one component,
 - use Tailwind CSS utilities,
 - avoid unnecessary dependencies,
@@ -18,3 +19,5 @@ When creating React artifacts:
 - make controls meaningful,
 - ensure responsive layout,
 - make labels readable.
+
+Use `frontend-design` as a quality layer for aesthetics and implementation polish. It should not override task-specific domain rules, factual accuracy, accessibility, or the user's requested format.

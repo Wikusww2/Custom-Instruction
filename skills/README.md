@@ -18,4 +18,5 @@ For API or skill upload workflows, zip a single skill folder as its own top-leve
 
 ## Current skills
 
+- `frontend-design`
 - `show-me-infographic`

@@ -24,6 +24,7 @@ When debugging:
 
 ## React/frontend notes
 
+- Load `.agents/skills/frontend-design/SKILL.md` whenever design is happening in code, including UI, layout, styling, interaction, or visual polish.
 - Avoid card-based layouts unless explicitly requested.
 - Avoid SVG unless explicitly requested.
 - Avoid default warm cream, beige, off-white, terracotta, or muted deep green palette choices.

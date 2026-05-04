@@ -1,400 +1,249 @@
 ---
 name: show-me-infographic
-description: Use this skill when the user asks “show me…”, “visualize…”, “explain visually…”, “make an interactive infographic about…”, or asks for a code-rendered educational visual about any topic. Generate a consistent, sleek, dark, minimal, interactive infographic with topic-specific visual reasoning and explanatory text below it. Do not use image generation.
+description: Use this skill when the user asks “show me…”, “visualize…”, “explain visually…”, “make an interactive infographic about…”, or asks for a code-rendered educational visual about any topic. Generate a polished, topic-fitted, interactive infographic with explanatory text below it. Do not use image generation.
 ---
 
 # Show Me Infographic Skill
 
 ## Purpose
 
-Create a consistent, code-rendered educational infographic for any topic the user asks to “show me.” Preserve one recognizable visual brand while adapting the diagram, layout, controls, and visual metaphor to the subject.
+Create a code-rendered educational infographic for any topic the user asks to "show me." The result must be visually and conceptually fitted to the topic, not a generic canvas with changed labels.
 
-The goal is not to reuse the same diagram, page composition, control set, or premise every time. The goal is to preserve design language, interaction quality, information hierarchy, and explanatory style across different domains while changing the visual logic to fit the topic.
+The skill has two goals:
+- preserve a high-quality, polished educational interface,
+- change the visual model, layout, controls, and visual language to match the actual topic.
 
-The core rule is: same brand, different visual thinking. A physics concept, a biological structure, a social concept, a mathematical transformation, and a historical event should not look like variations of the same circuit, wave, slider, or canvas template.
+Consistency means quality, clarity, and deliberate design. It does not mean the same page structure, dark theme, canvas composition, moving dots, sliders, readouts, or physics-style simulation every time.
+
+## Supporting Skill
+
+Because this skill creates a frontend artifact, also apply `.agents/skills/frontend-design/SKILL.md` as a supporting design-quality guideline.
+
+Use `frontend-design` for:
+- aesthetic direction,
+- typography,
+- colour,
+- layout,
+- motion,
+- responsiveness,
+- polish.
+
+Do not let `frontend-design` override this skill's requirements for factual accuracy, topic-fit, educational clarity, code rendering, no image generation, and explanation below the visual.
 
 ## Trigger
 
 Use this skill when the user says or clearly means:
-- “Show me ...”
-- “Visualize ...”
-- “Explain visually ...”
-- “Make an interactive infographic about ...”
-- “Create an interactive explainer for ...”
+- "Show me ..."
+- "Visualize ..."
+- "Explain visually ..."
+- "Make an interactive infographic about ..."
+- "Create an interactive explainer for ..."
 
 Do not use this skill when the user asks for AI image generation or only wants a normal text explanation.
 
-## Core Output Rule
+## Required Output
 
-Generate a visual, interactive infographic first, then place the explanation below it.
+Generate the interactive visual first, then place explanation below it.
 
 Preferred output:
 1. A single rendered React component.
-2. A code-generated topic-specific visual as the dominant first element.
-3. Controls placed where they best support the visual, such as below, beside, above, inside a side rail, or as a compact stepper.
-4. Data readouts, labels, short facts, or qualitative status indicators linked to the controls.
-5. Clear explanatory text below the visual.
-
-Do not use image generation. Do not merely describe the infographic unless rendering is impossible.
-
-## Visual Brand System
-
-Use a sleek, minimal, dark educational-science look:
-- dark matte background,
-- clean scientific diagram,
-- high-contrast white headings,
-- muted grey labels,
-- restrained accent colours,
-- thin technical lines,
-- soft minimal motion,
-- precise spacing,
-- no decorative clutter.
-
-Use one coherent infographic page, not a card dashboard. The page structure may change to fit the topic.
-
-Required content, with flexible placement:
-1. Header with small uppercase eyebrow label, strong title, and one interaction sentence.
-2. Dominant topic-specific visual area.
+2. A topic-specific visual as the dominant first element.
 3. Controls only when they clarify the concept.
-4. Readouts, annotations, legends, or state labels where appropriate.
-5. Explanation underneath.
+4. Readouts, labels, legends, or annotations connected to the controls.
+5. Concise educational explanation below the visual.
+
+Do not use AI image generation. Do not merely describe the infographic unless rendering is impossible.
+
+## Topic-Fit Contract
+
+Before coding, decide the actual visual contract for the topic. The final artifact must visibly satisfy it.
+
+Define internally:
+- Topic-native objects: the real things, actors, structures, evidence, stages, forces, regions, entities, or examples that belong to the concept.
+- Topic-native variables: the real quantities, states, choices, phases, weights, categories, or conditions that change understanding.
+- Topic-native relationships: the causal, spatial, temporal, mathematical, anatomical, social, or logical relationships that must be visible.
+- Learner misconception: the wrong mental model the visual should correct.
+- Visual proof: at least three visible details that would be wrong or meaningless if copied into an unrelated topic.
+
+If these cannot be defined, redesign before implementation.
+
+The visual must answer:
+- What actual thing am I looking at?
+- What changes?
+- Why does that change matter for this topic?
+
+## Visual Model Selection
+
+Choose a visual model from the topic, not from habit.
+
+| Topic type | Better visual models | Better controls |
+|---|---|---|
+| Mechanism or process | causal chain, staged animation, state transition, system cutaway | stepper, speed, reveal labels |
+| Physical law or engineering | direct simulation, force diagram, graph plus object, specimen view | real parameter sliders, material selector, overlay toggle |
+| Biology or anatomy | labelled cross-section, pathway, layer stack, zoomed tissue/organ region | layer toggles, stage selector, pathology toggle |
+| Chemistry | particle model, reaction pathway, energy diagram, concentration field | concentration, temperature, phase, catalyst toggle |
+| Mathematics | graph, geometric construction, transformation, numeric-to-visual mapping | parameter sliders, formula toggle, compare cases |
+| Statistics | distribution, sampling view, confidence region, error/bias comparison | sample size, mean, variance, group selector |
+| History or timeline | timeline, cause-effect map, actors and pressures, branching path | era selector, theme highlight, sequence scrubber |
+| Comparison | aligned scales, matrix, before/after, tradeoff map | category selector, sort mode, highlight differences |
+| System or network | nodes, flows, feedback loops, bottlenecks, failure modes | isolate subsystem, toggle flows, stress condition |
+| Scale or spectrum | logarithmic scale, nested zoom, gradient with markers | zoom, marker, scale mode |
+| Abstract or social concept | evidence map, lens/filter, scenario comparison, decision tree, perspective map | evidence mix, perspective toggle, bias weight, mitigation stepper |
+| Definition or language concept | semantic map, examples/non-examples, boundary cases, contrast pairs | reveal layers, compare cases, ambiguity slider |
+
+Examples of topic-fit:
+- Electricity: circuit path, battery potential difference, load, current/charge flow, field direction, resistance, power.
+- Light: wave/ray optics, wavelength, photon energy, spectrum marker, reflection/refraction boundary, medium.
+- Tensile strength: specimen under load, stress-strain curve, strain, material, elastic/yield/UTS/fracture regions.
+- Bias: evidence points, prior-belief weighting, ignored counter-evidence, shifted judgement, checking/mitigation loop.
+- Democracy: voters, representatives, institutions, rules, accountability loops, information flow, failure points.
+- Inflation: basket of goods, price index over time, purchasing power, wage lag, demand/supply pressure, policy levers.
+- Photosynthesis: chloroplast structure, light reactions, carbon fixation, inputs/outputs, energy carriers.
+
+## Layout Rules
+
+Use one coherent infographic page. The page structure must be chosen for the topic.
 
 Allowed layout archetypes:
-- single-stage simulation for one changing system,
-- split comparison for before/after or competing interpretations,
-- side-by-side graph plus object view for measurable concepts,
-- timeline track for historical or developmental sequences,
-- layered cross-section for anatomy, geology, devices, or systems,
-- network map for relationships, feedback loops, or influence,
-- matrix or spectrum for classification, tradeoffs, or bias patterns,
-- guided stepper for processes where sequence matters,
-- zoom lens or nested scale view for microscopic, cosmic, or hierarchical topics.
+- single-stage simulation,
+- split comparison,
+- graph plus object view,
+- timeline track,
+- layered cross-section,
+- network map,
+- matrix or spectrum,
+- guided stepper,
+- zoom lens or nested scale view,
+- scenario comparison,
+- decision tree.
 
-Do not default to a header, one large rectangular canvas, horizontal controls, three readout boxes, and paragraphs every time. Use that composition only when it is the best fit for the topic.
+Do not default to:
+- one large rectangular canvas,
+- horizontal controls below it,
+- three readout boxes,
+- dark technical grid,
+- moving dots,
+- generic arrows,
+- the same explanatory paragraph structure.
+
+Use those only when they genuinely fit the topic.
+
+## Design Direction
+
+Use `frontend-design` to choose a deliberate aesthetic direction for the specific subject.
+
+The design may be dark, light, clinical, editorial, industrial, academic, playful, brutalist, refined, dense, sparse, or another suitable direction. The choice must support the concept and audience.
 
 Avoid:
-- card-based layouts,
-- dashboard clutter,
-- unrelated icons,
-- generic templates,
-- stock image aesthetics,
-- beige, cream, warm terracotta, off-white, or muted deep green palette defaults,
-- SVG unless explicitly requested.
+- generic AI aesthetics,
+- purple gradients on white by default,
+- Inter/system typography by default,
+- card dashboards unless the task needs cards,
+- decorative effects unrelated to the concept,
+- designs that would work unchanged for another topic.
 
-Default palette:
-- Page background: near-black or neutral-950.
-- Main text: neutral-100 or white.
-- Secondary text: neutral-400 to neutral-500.
-- Divider lines: neutral-800.
-- Technical lines: neutral-600 to neutral-700.
-- Active accent: choose intelligently from cyan, blue, violet, amber, red, or topic-appropriate spectral colours.
-
-Use colour semantically. Keep non-data elements neutral. Reserve bright colour for active, moving, selected, or important elements.
-
-Use system UI or Inter-style typography. Use bold sparingly.
-
-## Technical Implementation Rules
-
-Default to a single React component with Canvas 2D for the main infographic.
-
-Preferred stack:
-- React,
-- Tailwind CSS utility classes,
-- HTML Canvas 2D,
-- React state,
-- `useMemo`, `useRef`, and `useEffect`,
-- `requestAnimationFrame` for meaningful animation.
-
-The component must:
-- be self-contained,
-- default export one React component,
-- avoid unnecessary dependencies,
-- use meaningful variable names,
-- keep constants near the top,
-- be responsive,
-- include accessible labels for controls,
-- avoid dead controls.
-
-The code should expose the chosen concept model in clear constants. Examples:
-- process phases for a sequence,
-- material properties for engineering,
-- anatomical layers for biology,
-- evidence weights for bias or judgement,
-- nodes and links for systems,
-- bins and distributions for statistics,
-- events and causal links for history.
-
-Do not begin from a prior topic's implementation and rename labels. Reusing helper functions is fine; reusing the same visual premise is not.
+Use:
+- topic-specific palette and accent logic,
+- typography that fits the subject,
+- semantic colour,
+- labels placed near what they explain,
+- motion only where it teaches,
+- responsive layout with no overlapping text or controls.
 
 ## Interactivity Rules
 
-Add interactivity only when it improves understanding.
-
-Good controls:
-- sliders for continuous variables,
-- toggles for modes or overlays,
-- material or condition selectors,
-- play/pause animation,
-- step-through sequence controls,
-- click-to-select regions,
-- draggable handles when they clarify cause and effect.
+Add controls only when they improve understanding.
 
 Every control must update at least two of:
-- main visual,
-- numeric readout,
-- label,
-- explanatory sentence,
-- highlighted region,
+- the main visual,
+- a label,
+- a readout,
+- a highlighted region,
+- an explanatory sentence,
 - animation state.
 
-Prefer 1 to 4 strong controls over many weak controls.
+Controls must be concept-specific:
+- voltage for a circuit,
+- strain for tensile strength,
+- wavelength for light,
+- phase for mitosis,
+- sample size for statistics,
+- evidence weighting for bias,
+- era/actor focus for history.
 
-Controls must match the domain. Use a voltage slider for a circuit, a strain slider for tensile strength, a wavelength slider for light, a phase selector for mitosis, an evidence-weight slider for bias, and a timeline scrubber for history. Do not reuse a generic "strength" slider when the concept has a more truthful variable.
+Do not use a generic "strength" slider unless strength is the actual concept variable.
 
-## Animation Rules
+## Implementation Rules
 
-Use subtle animation only when it clarifies change, flow, force, motion, sequence, or transformation.
+Default to:
+- a single React component,
+- Tailwind CSS utilities,
+- Canvas 2D for dynamic diagrams when appropriate,
+- React state for controls,
+- `useMemo`, `useRef`, and `useEffect` where useful,
+- `requestAnimationFrame` only for meaningful animation.
 
-Acceptable animation:
-- moving wave or particle,
-- flowing current or fluid,
-- cycling process step,
-- stress increasing on a material,
-- pulsing highlight,
-- gradual deformation,
-- time progression.
+Canvas is preferred for simulations and custom diagrams, but HTML/CSS layout, SVG, or mixed rendering is acceptable when it is a better technical fit. Do not force Canvas if the concept is better represented as a timeline, matrix, semantic map, or structured layout.
 
-Avoid distracting motion, flashing, and decorative animation. Provide pause/resume if animation is continuous.
+The component must:
+- be self-contained,
+- default export one component,
+- avoid unnecessary dependencies,
+- use clear constants for the concept model,
+- include accessible labels for controls,
+- be responsive,
+- avoid dead controls.
 
-## Choose the Best Visual Model
+## Anti-Template Gate
 
-Do not force every topic into the same visual pattern. First identify what the user needs to see and what kind of thing the topic is.
+Reject and redesign before final output if:
+- the title is the only topic-specific part,
+- fewer than three visible elements are topic-native,
+- the same layout would work for the previous unrelated topic,
+- an abstract/social/history topic is forced into a physics simulation,
+- a physical/biological mechanism is reduced to a vague metaphor when direct representation is possible,
+- labels describe relationships that are not visible,
+- the result feels like a dashboard about the topic instead of an infographic that reveals the topic.
 
-Before coding, make an internal visual brief with these decisions:
-1. Domain: physical, biological, mathematical, social, historical, procedural, systemic, comparative, scale-based, or abstract.
-2. Core invisible idea: flow, force, structure, sequence, transformation, distribution, tradeoff, cause-effect, hierarchy, feedback, uncertainty, or perspective.
-3. Visual grammar: arrows, layers, axes, particles, fields, curves, maps, timelines, matrices, lenses, balances, trees, or networks.
-4. Layout archetype: choose from the layout list above or create a better one.
-5. Control model: choose only controls that manipulate the real conceptual variables.
-6. Failure check: name one visual metaphor that would be wrong for this topic and avoid it.
+## Knowledge Rules
 
-| Topic type | Best visual model | Possible controls |
-|---|---|---|
-| Mechanism/process | flow diagram, causal chain, animated sequence | stepper, speed, reveal labels |
-| Physical law/engineering | parameterized simulation, vectors, graph, specimen diagram | sliders, material selector, overlay toggle |
-| Anatomy/biology | labelled cross-section, layers, pathway, zoomed region | layer toggles, pathology toggle, stage selector |
-| Chemistry | particle model, reaction pathway, energy diagram | concentration, temperature, phase toggle |
-| Mathematics | graph, geometric construction, transformation view | parameter sliders, formula toggle |
-| Statistics | distribution, sampling animation, confidence region | sample size, mean, variance |
-| Timeline/history | horizontal timeline, cause-effect map | era selector, theme highlight |
-| Comparison | aligned scales, matrix, before/after | category selector, sort mode |
-| System/network | nodes, flows, feedback loops | isolate subsystem, toggle flows |
-| Scale/spectrum | logarithmic scale, gradient, zoom window | marker, scale mode |
-| Abstract/social concept | evidence map, balance, lens/filter, spectrum, causal map, scenario comparison | bias strength, evidence mix, perspective toggle, mitigation stepper |
-| Ethics/reasoning | decision tree, stakeholder map, claim-evidence-warrant view | assumption toggle, evidence quality, consequence horizon |
-| Language/concept definition | semantic map, contrast pairs, examples/non-examples, boundary cases | reveal layers, compare cases, ambiguity slider |
-
-Examples:
-- Tensile strength: specimen bar pulled from both ends, stress-strain curve, strain slider, material selector, elastic/yield/ultimate/fracture labels.
-- Mitosis: cell diagram changing by phase, chromosomes separating, phase selector, spindle fibre toggle.
-- Optic nerve cupping: optic disc cross-section, top-view cup-to-disc representation, cup-to-disc ratio slider, rim/RNFL/IOP context.
-- Bias: do not make it look like a physics field or generic particle flow. Use an evidence-to-judgement visual: balanced evidence points, a bias lens/filter that weights some evidence more heavily, a neutral reference line, shifted judgement, and a mitigation/checking control. For social bias, use group assumptions versus individual evidence. For data bias, use sampling coverage and missing regions. For cognitive bias, use attention weighting and prior-belief pull.
-- Electricity: circuit path, battery potential difference, load, charge/current flow, field direction, resistance, and power readouts.
-- Light: wave and ray optics, wavelength, photon energy, refraction/reflection boundary, spectrum marker, medium selector.
-
-For medical topics, keep the explanation educational and avoid diagnosis unless clinical context is supplied and clinical reasoning is requested.
-
-## Anti-Template Rules
-
-The skill fails if it produces a one-shoe-fits-all design.
-
-Reject and redesign before final output when:
-- the same layout would work unchanged for the previous unrelated topic,
-- the title is the only part that makes the diagram topic-specific,
-- the controls are generic instead of concept-specific,
-- the visual uses waves, particles, arrows, gauges, or sliders only because they are easy to draw,
-- an abstract, social, historical, or reasoning topic is forced into a physics-style simulation,
-- a physical mechanism is reduced to a generic metaphor when a direct diagram or simulation is possible,
-- the explanation describes relationships that are not visible in the diagram.
-
-Acceptable consistency:
-- dark technical brand,
-- typography,
-- spacing discipline,
-- label style,
-- motion restraint,
-- explanation style.
-
-Unacceptable sameness:
-- same canvas composition,
-- same horizontal control strip,
-- same three readout boxes,
-- same moving dots or arrows,
-- same "change one strength slider and watch something shift" premise,
-- same rectangular framed stage for every topic.
-
-## Knowledge and Research Rules
-
-Before generating the infographic, decide whether factual verification is needed.
-
-Use reliable sources when:
+Verify or source facts when:
 - the topic is medical, legal, financial, safety-related, or high-stakes,
 - the user asks for current information,
 - numerical constants, ranges, standards, or classifications matter,
 - the topic is niche or unfamiliar.
 
-When facts are uncertain:
-- state uncertainty clearly,
-- avoid overclaiming,
-- mark simplified educational models as simplified.
+Never fabricate statistics, thresholds, citations, mechanisms, anatomical details, or clinical claims.
 
-Never fabricate statistics, thresholds, guidelines, citations, mechanisms, anatomical details, or clinical claims.
+Mark simplified educational models as simplified when needed.
 
 ## Explanation Below the Visual
 
-The explanation must be concise but substantial.
+The explanation should be concise but substantial.
 
 Recommended structure:
 1. Big-picture sentence.
 2. Three to five short paragraphs, each starting with a bold key concept.
-3. Each paragraph explains what the visual is showing.
-4. Tie the explanation to controls when possible.
+3. Tie explanation to what the visual shows and what controls change.
 
-Use correct terminology. On first mention, write the full term followed by the abbreviation when useful, such as ultimate tensile strength (UTS), intraocular pressure (IOP), retinal nerve fibre layer (RNFL), or deoxyribonucleic acid (DNA).
+Use correct terminology and units wherever numeric values appear.
 
-Include units wherever numeric values appear.
+## Workflow
 
-## Required Workflow
+1. Parse topic, learning goal, scope, domain, and whether controls help.
+2. Load `frontend-design` as a supporting design-quality layer.
+3. Define the Topic-Fit Contract.
+4. Choose visual model, layout archetype, aesthetic direction, and control model.
+5. Build the artifact with topic-native geometry, labels, interactions, and responsive polish.
+6. Write the explanation below the visual.
+7. Apply the Anti-Template Gate before finalizing.
 
-1. Parse the prompt: topic, learning goal, scope, domain, and whether controls help.
-2. Create the internal visual brief: domain, invisible idea, visual grammar, layout archetype, control model, and wrong-fit metaphor to avoid.
-3. Decide the visual metaphor: structure, flow, force, scale, comparison, time, probability, classification, perspective, or evidence weighting.
-4. Design the interaction model: only meaningful controls.
-5. Build the visual: dark brand, topic-specific geometry, labels near objects, responsive scaling.
-6. Write the explanation: what viewer sees, what controls change, key principle, why it matters.
-7. Final consistency check: topic match, dynamic layout choice, working controls, correct units, readable labels, meaningful colours, supported claims, explanation matches visual.
-
-## Output Constraints
-
-Do not:
-- use image generation,
-- output only text,
-- create a downloadable file unless requested,
-- use a card-heavy layout,
-- use unrelated decorative graphics,
-- use warm cream/beige/terracotta/off-white/muted deep green default palettes,
-- overuse gradients,
-- make the diagram childish,
-- include meaningless controls,
-- reuse a visual premise from an unrelated topic,
-- force abstract topics into physical simulations,
-- invent facts or fake exactness.
-
-Do:
-- render the infographic first when possible,
-- keep one strong visual identity,
-- adapt the diagram intelligently to the topic,
-- choose a layout archetype from the actual concept,
-- use dynamic state when helpful,
-- keep explanatory text below the visual,
-- verify high-stakes or current facts.
-
-## Quality Bar
+## Success Tests
 
 A successful output passes these tests:
-1. If the title were removed, the diagram should still suggest the topic.
-2. If controls were removed, the visual should still teach something.
-3. If text were removed, the user should still understand the main structure.
-4. Outputs should look like one brand family.
-5. When the topic changes, the visual metaphor changes while the brand stays consistent.
-6. A bias output should not look like a light output, a light output should not look like an electricity output, and neither should look like tensile strength.
-
-## Minimal Starting Template
-
-Use this only as a minimal wiring reference for React, Canvas, state, and resize behavior. It is not a layout template and not a design template. Replace the component state, layout, control placement, readouts, drawing functions, and explanatory structure to fit the topic.
-
-```jsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
-export default function ShowMeInfographic() {
-  const canvasRef = useRef(null);
-  const [primaryParameter, setPrimaryParameter] = useState(50);
-  const [mode, setMode] = useState("default");
-  const [paused, setPaused] = useState(false);
-
-  const derived = useMemo(() => ({
-    label: "Derived value",
-    value: primaryParameter,
-  }), [primaryParameter]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let frameId;
-    let t = 0;
-
-    function resize() {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = Math.floor(rect.width * dpr);
-      canvas.height = Math.floor(rect.height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function draw() {
-      resize();
-      if (!paused) t += 0.016;
-      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-      // Draw the topic-specific infographic here.
-      frameId = requestAnimationFrame(draw);
-    }
-
-    draw();
-    window.addEventListener("resize", resize);
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", resize);
-    };
-  }, [primaryParameter, mode, paused]);
-
-  return (
-    <main className="min-h-screen bg-neutral-950 px-5 py-7 text-neutral-100">
-      <section className="mx-auto max-w-6xl">
-        <header className="mb-5 border-b border-neutral-800 pb-5">
-          <p className="mb-1 text-sm font-semibold uppercase tracking-[0.22em] text-neutral-500">
-            interactive explainer
-          </p>
-          <h1 className="text-3xl font-black tracking-tight md:text-4xl">
-            Show me [topic]
-          </h1>
-          <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-neutral-400">
-            Use the controls to change the key variable and see the visual update.
-          </p>
-        </header>
-
-        <canvas
-          ref={canvasRef}
-          className="h-[680px] w-full border-b border-neutral-800 bg-neutral-950"
-          aria-label="Interactive infographic"
-        />
-
-        <section className="border-b border-neutral-800 py-6">
-          {/* Controls go here. */}
-        </section>
-
-        <section className="grid gap-5 border-b border-neutral-800 py-6 md:grid-cols-4">
-          {/* Readouts go here. */}
-        </section>
-
-        <section className="max-w-5xl space-y-5 py-7 text-xl leading-relaxed text-neutral-100">
-          <p><strong>Key concept.</strong> Explain what the visual shows.</p>
-          <p><strong>Interaction.</strong> Explain what changes when the user moves the controls.</p>
-          <p><strong>Why it matters.</strong> Explain the practical or conceptual importance.</p>
-        </section>
-      </section>
-    </main>
-  );
-}
-```
-
-Consistency does not mean sameness. The brand must stay consistent. The visual logic must adapt to the topic.
+1. If the title were removed, the visual still suggests the topic.
+2. If the controls were removed, the visual still teaches something.
+3. If the explanation were removed, the main structure is still understandable.
+4. At least three visible elements would be wrong in an unrelated topic.
+5. The design feels deliberately made for this prompt.
+6. The visual model changes when the topic changes.

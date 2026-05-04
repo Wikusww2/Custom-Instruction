@@ -66,7 +66,8 @@ Read `skills/skill-registry.md`.
 
 If a prompt matches a listed skill trigger, load the matching `.agents/skills/<skill-name>/SKILL.md` before answering.
 
-Current skill:
+Current skills:
+- `frontend-design`
 - `show-me-infographic`
 
 ## 7. Final behavior rule
