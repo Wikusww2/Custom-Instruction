@@ -5,6 +5,11 @@ This is an OpenAI/Codex-style skill package.
 ## Main file
 
 - `SKILL.md`
+- `TRIGGER_RULE.md`
+
+## Design behavior
+
+The skill should keep one recognizable dark technical brand, but it must change the visual model, layout, controls, and diagram logic to fit the topic. It should not reuse the same canvas composition for electricity, light, bias, biology, history, statistics, and engineering concepts.
 
 ## Trigger phrases
 
