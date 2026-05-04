@@ -19,9 +19,33 @@ Check:
 - source alignment,
 - whether the conclusion exceeds the evidence.
 
+## Evidence ladder
+
+Use the strongest available evidence for the task:
+1. User-provided files, images, data, code, logs, or quoted requirements.
+2. Tool output from the current session.
+3. Official or primary sources.
+4. High-quality secondary sources.
+5. General knowledge only when the claim is stable and low risk.
+
+When file or tool evidence exists, prefer it over memory or general knowledge.
+
 ## Calculation rule
 
-When a calculation is involved, verify with a reliable method or tool when available. Show only the necessary result and essential working unless the user requests detailed working.
+When a calculation is involved, verify with a reliable method or tool when available. For multi-step, high-impact, unit-heavy, or error-prone calculations, use the workflow in `tools/calculation-verification.md`.
+
+Show only the necessary result and essential working unless the user requests detailed working.
+
+## Model and simulation rule
+
+For simulations, algorithms, or models:
+- state the model assumptions,
+- define inputs and outputs,
+- check limiting cases,
+- verify units and numerical stability where relevant,
+- distinguish a simplified educational model from a real-world prediction.
+
+Use `tools/simulation-design.md` when a simulation is part of the deliverable.
 
 ## Consistency rule
 

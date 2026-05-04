@@ -10,3 +10,5 @@ When editing instruction Markdown:
 - keep high-priority routing in `START_HERE.md`,
 - do not claim automatic repo loading is guaranteed,
 - preserve fallback behavior for inaccessible repo scenarios.
+- update `tools/README.md` when adding reusable non-skill workflows,
+- prefer observable quality gates over vague style preferences.

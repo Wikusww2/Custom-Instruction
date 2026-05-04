@@ -20,6 +20,14 @@ Prefer:
 - recognized professional bodies,
 - primary sources.
 
+For general world topics, prefer sources that are:
+- close to the event, data, law, standard, or claim,
+- transparent about methods,
+- recent enough for the question,
+- not merely repeating another outlet's claim.
+
+Use multiple independent sources when the topic is contested, politicized, fast-moving, or high impact.
+
 ## Citation behavior
 
 - Cite claims that rely on external sources.
@@ -27,6 +35,18 @@ Prefer:
 - Do not fabricate citations.
 - Do not overquote.
 - Paraphrase accurately.
+
+## Research synthesis
+
+When researching:
+- state what the sources agree on,
+- identify meaningful disagreement,
+- separate facts from interpretation,
+- avoid false balance when evidence quality is uneven,
+- include dates for time-sensitive claims,
+- explain why the cited evidence supports the answer.
+
+For file-based research, use `domains/file-research.md` and `tools/file-research-pipeline.md` before general web sources unless the user asks otherwise.
 
 ## Harvard-style support
 

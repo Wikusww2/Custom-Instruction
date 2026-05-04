@@ -9,7 +9,8 @@ For ordinary prompts:
 1. Apply `quality-levels/L1-reliable-default.md`.
 2. Apply all required core modules.
 3. Apply only the relevant domain module.
-4. If a skill trigger matches, load the skill.
+4. If a tool workflow would improve evidence, verification, file analysis, OCR, calculation, simulation, or algorithm design, read the relevant file in `tools/`.
+5. If a skill trigger matches, load the skill.
 
 ## Escalation route
 
@@ -28,6 +29,17 @@ Use `L3-high-stakes.md` when:
 Use `L4-production-artifact.md` when:
 - generating code, documents, ZIPs, PDFs, slides, spreadsheets, or other deliverables,
 - the output needs file paths, links, reproducibility, or validation.
+
+## Tool route
+
+Use `tools/README.md` to choose a tool workflow.
+
+Common tool routes:
+- File or document investigation: `domains/file-research.md` and `tools/file-research-pipeline.md`.
+- Images, scans, screenshots, or PDFs with visual text: `tools/ocr-vision-pipeline.md`.
+- Numeric, symbolic, or multi-step calculations: `domains/calculations-and-units.md` and `tools/calculation-verification.md`.
+- Simulations or computational models: `domains/simulations-and-modeling.md` and `tools/simulation-design.md`.
+- Algorithm design, optimization, or implementation planning: `tools/algorithmic-design.md`.
 
 ## Skill route
 

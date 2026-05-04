@@ -7,6 +7,7 @@ When working in this repo:
 - keep `START_HERE.md` as the entry point,
 - keep ChatGPT paste prompts short enough for UI limits,
 - place reusable workflows under `.agents/skills/<skill-name>/SKILL.md`,
+- place non-skill operational workflows under `tools/`,
 - do not duplicate long rules unless necessary,
 - update `CHANGELOG.md` when behavior changes.
 
@@ -15,3 +16,4 @@ For generated Markdown:
 - keep rules actionable,
 - avoid vague personality claims,
 - include routing guidance where relevant.
+- prefer concrete behavior rules over broad statements like "be better" or "be accurate."

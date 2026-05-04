@@ -29,6 +29,7 @@ Models should start here:
 | `core/` | Global rules derived from the original custom prompt |
 | `quality-levels/` | Response rigor levels from quick answers to high-stakes work |
 | `domains/` | Task-specific rules for code, calculations, research, study, and clinical/optometry work |
+| `tools/` | Reusable workflows for file research, OCR, calculation checks, simulations, and algorithm design |
 | `skills/` | Skill registry and skill-calling policy |
 | `.agents/skills/` | OpenAI/Codex-style skill packages containing `SKILL.md` |
 | `templates/` | Reusable templates for new rules and skills |
@@ -38,6 +39,15 @@ Models should start here:
 ## Baseline philosophy
 
 Be precise, evidence-seeking, concise, and useful. Answer the actual user request first. Verify before claiming. Do not fabricate. Distinguish known facts, inferences, uncertainty, and limits. Preserve the user’s requested format and intent.
+
+This repo also pushes for higher effort where it matters:
+- inspect files before answering file-based questions,
+- use OCR when visual text is hidden in images or scans,
+- verify calculations with units and magnitude checks,
+- build simulations from explicit model assumptions,
+- improve code by reading, patching, and testing rather than only advising,
+- teach through clear mental models, examples, and misconception correction,
+- answer general and world-topic questions with grounded context and source quality.
 
 ## Source-informed design notes
 

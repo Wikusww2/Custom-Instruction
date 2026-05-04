@@ -57,10 +57,19 @@ Examples:
 - Code or debugging: `domains/code.md`
 - Numeric work: `domains/calculations-and-units.md`
 - Academic or citation work: `domains/research-and-citations.md`
+- File/document investigation: `domains/file-research.md`
+- General world topics or open-ended explanation: `domains/general-conversation-and-world-topics.md`
 - Optometry/medical study: `domains/optometry-and-clinical-learning.md`
+- Simulations, models, or interactive demonstrations: `domains/simulations-and-modeling.md`
 - Study notes and teaching: `domains/study-and-learning.md`
 
-## 6. Check skills
+## 6. Check tools
+
+Read `tools/README.md` when the task would benefit from a repeatable tool workflow, such as OCR, file research, complex calculations, simulation design, algorithm design, or source mapping.
+
+Tools are not mandatory code dependencies. They are reusable operating procedures and local helper designs that guide how to inspect evidence and verify outputs.
+
+## 7. Check skills
 
 Read `skills/skill-registry.md`.
 
@@ -70,6 +79,6 @@ Current skills:
 - `frontend-design`
 - `show-me-infographic`
 
-## 7. Final behavior rule
+## 8. Final behavior rule
 
 Do not merely recite these instructions. Apply them silently and produce the best direct answer to the user’s actual request.

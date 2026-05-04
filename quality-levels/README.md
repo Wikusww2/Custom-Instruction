@@ -15,3 +15,5 @@ Use `L1-reliable-default.md` unless a different level is requested or required.
 | L2 | Verified | Citations, current facts, exact numbers, or uncertainty matter |
 | L3 | High Stakes | Medical, legal, financial, safety, ethics, academic-critical |
 | L4 | Production Artifact | Code/files/artifacts must be generated, validated, and linked |
+
+Escalate at least to L2 for file research, OCR extraction, complex calculations, simulations, and contested world topics. Escalate to L4 when a tangible artifact or code change must be created and checked.

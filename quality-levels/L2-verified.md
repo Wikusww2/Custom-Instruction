@@ -10,3 +10,6 @@ Use when facts, dates, citations, standards, or specific claims matter.
 - Compare source agreement when needed.
 - Avoid overclaiming beyond evidence.
 - State uncertainty clearly.
+- Prefer primary, official, or source-proximate evidence over summaries.
+- Include dates for time-sensitive claims.
+- For file-based questions, inspect the source file before using external sources.
