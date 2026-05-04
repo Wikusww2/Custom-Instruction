@@ -9,9 +9,15 @@ This is an OpenAI/Codex-style skill package.
 
 ## Design behavior
 
-The skill should keep one recognizable technical quality bar, but it must change the visual model, layout, controls, and diagram logic to fit the topic. It should not reuse the same canvas composition for electricity, light, bias, biology, history, statistics, and engineering concepts.
+The skill should keep a high visual quality bar, but it must not keep one fixed brand. It should change the visual model, layout, medium, imagery, typography, colours, and interaction level to fit the topic.
 
-It also uses `frontend-design` as a supporting design-quality guideline. That improves aesthetic direction and polish, but does not replace the show-me skill's concept-first infographic requirements.
+It also uses `frontend-design` as a supporting design-quality guideline. That improves aesthetic direction and polish, but does not replace the show-me skill's topic-first requirements.
+
+For real-world topics, the skill should actively use web/file/source references, maps, real imagery, editorial layouts, charts, and other visual material when those would improve the result. Places, people, products, public issues, history, culture, and current topics should not be designed from generic memory alone when browsing or supplied files are available.
+
+It should not default to fake SVG-style diagrams, fake canvas scenes, dark monotone palettes, cards, boxed control rails, or unnecessary interactivity. Static editorial infographics are often better than interactive toys. Interactivity should appear only when it helps the user understand a variable, comparison, process, or timeline.
+
+The core test is simple: if the title can be swapped for an unrelated topic and the design still works, the design failed.
 
 ## Trigger phrases
 

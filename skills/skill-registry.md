@@ -36,21 +36,19 @@ Use when the user asks:
 Do not use when:
 - the user asks for AI image generation,
 - the user asks only for a normal text explanation,
-- the user requests a static exported image,
 - rendering is impossible and no code artifact is desired.
 
 Expected output:
-1. Create a live rendered React artifact when possible.
-2. Use Canvas 2D for the main visual when appropriate.
-3. Keep the sleek dark scientific infographic brand.
-4. Also load `frontend-design` as a supporting guideline because this is design happening in code.
-5. Choose a topic-specific visual model, layout archetype, and control model before coding.
-6. Prove the visual fit with topic-native objects, variables, and relationships.
-7. Place the interactive visual first.
-8. Put concise educational explanation below the visual.
-9. Do not use image generation.
+1. Choose the right medium: static, interactive, motion, photo-led, map-led, chart-led, diagram-led, editorial, or mixed.
+2. Use web/file/source references before designing real-world, visual, current, local, historical, cultural, product, place, or person topics.
+3. Also load `frontend-design` as a supporting guideline because this is design happening in code.
+4. Choose a topic-specific art direction and visual model before coding.
+5. Prove the visual fit with topic-native objects, imagery, maps, photos, charts, textures, typography cues, variables, relationships, and source-grounded details.
+6. Use interactivity only when it improves understanding.
+7. Put concise educational explanation below or beside the visual when useful.
 
 Quality requirement:
-- Consistency means shared brand language, not repeated layouts.
-- The skill must not force unrelated topics into the same circuit, wave, slider, readout, or generic physics-style composition.
+- Consistency means quality, not repeated layouts or colours.
+- The skill must not force unrelated topics into the same circuit, wave, slider, readout, dark monotone palette, SVG/canvas-style map, card layout, control rail, or generic physics-style composition.
 - A good result should feel designed for the exact topic, not merely relabelled for it.
+- If the title can be swapped for another unrelated topic and the design still works, the output has failed.
