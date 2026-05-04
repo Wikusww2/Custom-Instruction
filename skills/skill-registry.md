@@ -41,14 +41,20 @@ Do not use when:
 Expected output:
 1. Choose the right medium: static, interactive, motion, photo-led, map-led, chart-led, diagram-led, editorial, or mixed.
 2. Use web/file/source references before designing real-world, visual, current, local, historical, cultural, product, place, or person topics.
-3. Also load `frontend-design` as a supporting guideline because this is design happening in code.
-4. Choose a topic-specific art direction and visual model before coding.
-5. Prove the visual fit with topic-native objects, imagery, maps, photos, charts, textures, typography cues, variables, relationships, and source-grounded details.
-6. Use interactivity only when it improves understanding.
-7. Put concise educational explanation below or beside the visual when useful.
+3. Convert source facts into visual entities and rank them before designing.
+4. For place/geography topics, default to map-led, photo-led, landmark-led, route-led, orientation-led, or identity-sheet visuals.
+5. Treat map-like visuals as either real map mode or clearly labelled schematic mode.
+6. Also load `frontend-design` as a supporting guideline because this is design happening in code.
+7. Choose a topic-specific art direction and visual model before coding.
+8. Prove the visual fit with topic-native objects, imagery, maps, photos, charts, textures, typography cues, variables, relationships, and source-grounded details.
+9. Use interactivity only when it improves understanding.
+10. Put concise educational explanation below or beside the visual when useful.
+11. Render and visually inspect the result before finalizing when possible.
 
 Quality requirement:
 - Consistency means quality, not repeated layouts or colours.
 - The skill must not force unrelated topics into the same circuit, wave, slider, readout, dark monotone palette, SVG/canvas-style map, card layout, control rail, or generic physics-style composition.
 - A good result should feel designed for the exact topic, not merely relabelled for it.
 - If the title can be swapped for another unrelated topic and the design still works, the output has failed.
+- If the user cannot understand the subject and takeaway in five seconds, the output has failed.
+- Reject label overlap, cramped labels, clipped content, large dead zones, unclear hierarchy, and Canvas/SVG filler.

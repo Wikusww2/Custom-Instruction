@@ -19,6 +19,12 @@ It should not default to fake SVG-style diagrams, fake canvas scenes, dark monot
 
 The core test is simple: if the title can be swapped for an unrelated topic and the design still works, the design failed.
 
+The second core test is usefulness: the user should understand the main subject, context, and takeaway within five seconds, before reading long explanatory paragraphs.
+
+For towns, cities, countries, buildings, landmarks, campuses, and regions, the skill should default to map-led, photo-led, landmark-led, route-led, orientation-led, or identity-sheet visuals. Map-like graphics must be either geographically faithful or clearly labelled as schematic.
+
+Generated artifacts should be visually inspected before finalizing when possible. Reject overlap, cramped labels, clipped content, large dead zones, unclear hierarchy, and Canvas/SVG filler.
+
 ## Trigger phrases
 
 Use this skill for:

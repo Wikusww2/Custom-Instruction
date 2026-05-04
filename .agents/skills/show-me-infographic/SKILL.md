@@ -15,6 +15,22 @@ The rule is: **topic first, reference first, art direction second, implementatio
 
 If the result would still make sense after replacing the title with a different unrelated topic, it is a failed result.
 
+## Five-Second Visual Usefulness Test
+
+The visual must be useful before the user reads long paragraphs. In the first five seconds, the user should be able to identify:
+- the main subject,
+- the visual form chosen for it,
+- the most important relationship or takeaway,
+- why the topic matters.
+
+For real-world place prompts, the five-second answer should usually include:
+- where it is,
+- what surrounds it,
+- what defines its identity,
+- why it is notable.
+
+If the artifact looks designed but does not quickly answer these questions, redesign it.
+
 ## Supporting Skills and Domains
 
 Apply `.agents/skills/frontend-design/SKILL.md` as a supporting design-quality guideline when creating coded visuals or interfaces.
@@ -72,6 +88,20 @@ The Sasolburg failure pattern to avoid:
 - labels doing all the relevance work,
 - no real photo, map, archive, industrial, civic, or local visual reference.
 
+## Source-to-Visual Pipeline
+
+For factual or real-world infographics, convert sources into visuals through this sequence:
+
+1. Find source facts and visual references.
+2. Extract visualizable entities: places, people, objects, dates, routes, quantities, landmarks, institutions, materials, processes, or evidence.
+3. Rank those entities by importance to the user's learning goal.
+4. Choose the visual model from the ranked entities, not from a template.
+5. Draw only relationships supported by sources or clearly mark them as schematic.
+6. Put source-derived labels near the thing they explain.
+7. Move secondary facts below the visual instead of crowding the main scene.
+
+Do not imply factual geometry, scale, location, chronology, or causality unless the source material supports it.
+
 ## Output Mode Selection
 
 Choose the output mode that best serves the topic:
@@ -79,6 +109,7 @@ Choose the output mode that best serves the topic:
 | Topic need | Better output mode |
 |---|---|
 | Real place, person, object, product, or event | researched editorial infographic, photo-led layout, map/photo/text hybrid |
+| Town, city, country, campus, building, landmark, or geographic region | map-led, photo-led, landmark-led, route/distance, orientation, identity sheet, or historical development map |
 | Historical story | timeline, archive/newspaper aesthetic, annotated images, cause-effect bands |
 | Scientific or mechanical process | diagram, simulation, staged animation, graph plus object |
 | Abstract concept | scenario comparison, evidence map, metaphor only if carefully chosen |
@@ -91,6 +122,41 @@ Choose the output mode that best serves the topic:
 Static is allowed. Interactive is allowed. Motion is allowed. Photographic/editorial is allowed. Mixed media is allowed. Choose deliberately.
 
 Default to static/editorial when the prompt asks for a place, event, biography, history, culture, public issue, or overview unless manipulation is central to understanding. Default to simulation only when variables, physics, mechanics, math, or process dynamics are central.
+
+## Place and Geography Visual Model
+
+For towns, cities, countries, campuses, buildings, landmarks, and geographic regions, default to a map-led, photo-led, landmark-led, route-led, or orientation-led visual. Do not create decorative pseudo-geography.
+
+A place/geography visual should normally answer:
+- Where is it?
+- What is around it?
+- What physical features, boundaries, routes, districts, or landmarks matter?
+- What defines its identity?
+- Why should the user care?
+
+Useful place/geography forms include:
+- real orientation map,
+- map plus key facts,
+- landmark-based town overview,
+- satellite/photo-inspired layout,
+- route or distance diagram,
+- historical development map,
+- town/city identity sheet,
+- annotated photo essay,
+- regional relationship map.
+
+For place prompts, prefer HTML/CSS editorial composition with sourced images, map references, captions, and clean annotation. Use Canvas only when there is a clear dynamic map, route, or simulation need.
+
+For a town like Sasolburg, the visual contract should be map-first, geography-first, and landmark-first: Vaal River context, Free State/Gauteng position, nearby Vanderbijlpark/Vereeniging/Johannesburg relation where relevant, Sasol industrial identity, and source-grounded local features. It should not become an industrial circuit-board metaphor unless the user explicitly asks for metaphor.
+
+## Map Honesty Rule
+
+Any map-like visual must declare internally which mode it is:
+
+- Real map mode: geographically faithful enough for orientation; use real map references, true relative positions, and avoid decorative distortion.
+- Schematic mode: simplified and not to scale; label it clearly as schematic and avoid presenting decorative geometry as geographic evidence.
+
+Never draw a fake river, fake road, fake boundary, or fake town position in a way that looks authoritative. If the geometry is approximate, say so in the visual or source notes.
 
 ## Form Rules
 
@@ -115,6 +181,47 @@ Do not default to:
 Avoid SVG/canvas-style visual filler unless that medium is truly right and the artwork is genuinely good. If a topic needs visual richness, use high-quality photographs, texture, maps, charts, collage, typography, or custom illustration instead of sterile placeholder geometry.
 
 Do not use cards as the default layout. If grouping is needed, use editorial sections, annotated bands, callout labels, overlaid captions, margins, columns, timelines, or map/photo panels. Use cards only when they are clearly the best structure.
+
+## Legibility and Layout Constraints
+
+Hard layout rules:
+- no text overlap,
+- no label collisions,
+- no important label over decorative gridlines or noisy imagery,
+- no labels crammed inside crowded nodes,
+- no clipped content at canvas/page edges,
+- no large dead zone that weakens the composition,
+- no floating timeline/control box without clear context,
+- no label that explains something not visibly present,
+- no important text below 14px on desktop or 13px on mobile,
+- line length should stay readable; avoid very long single-line annotations,
+- controls must not compete with the main subject.
+
+If labels collide, reduce labels, move secondary detail into the explanation, or redesign the composition.
+
+## Density Budget
+
+Most infographics should have:
+- one dominant visual idea,
+- 3 to 7 primary labels in the main visual,
+- 2 to 5 supporting facts or captions,
+- secondary details below the visual or behind meaningful interaction,
+- one clear focal point.
+
+Do not crowd the visual with every fact found during research. Rank and cut. A label that does not improve understanding should be removed.
+
+## Visual Hierarchy
+
+Build a clear reading order:
+
+1. Main subject.
+2. Spatial, causal, temporal, or conceptual context.
+3. Key relationships.
+4. Supporting facts.
+5. Optional controls.
+6. Source notes or explanation.
+
+The user's eye should not have to jump randomly between many equal-weight labels, dots, arrows, controls, and paragraphs. If everything has the same emphasis, redesign.
 
 ## Art Direction
 
@@ -209,6 +316,11 @@ Choose the best implementation for the visual:
 
 For editorial/static outputs, prefer strong HTML/CSS composition with images, typography, texture, captions, charts, and annotation before reaching for canvas.
 
+Canvas/SVG restraint:
+- Do not use Canvas for static real-world overviews, places, biographies, identity sheets, or editorial infographics unless it is clearly superior to HTML/CSS/images.
+- Do not use SVG for this user unless it is explicitly needed and visually excellent.
+- If a Canvas or SVG visual looks like placeholder geometry, replace it with sourced imagery, HTML/CSS layout, charts, or a better custom illustration.
+
 The artifact must be self-contained where possible and responsive. If using external images, use stable URLs and provide alt text. Do not hotlink questionable sources when source reliability or licensing is unclear; use official/public-domain/clearly usable sources where possible.
 
 ## Source Honesty
@@ -225,12 +337,33 @@ If facts or visuals are sourced:
 1. Parse the topic and learning goal.
 2. Decide whether research/web/file references are needed. Use them when they would materially improve factual accuracy or visual quality.
 3. For real-world topics, gather source/reference material before designing.
-4. Choose output mode: static, interactive, motion, photo-led, diagram-led, map-led, chart-led, or mixed.
-5. Consider at least two different art directions and choose the one that best fits the topic.
-6. Gather topic-native facts, imagery ideas, visual motifs, colours, textures, and layout references.
-7. Design the infographic around those references.
-8. Build the artifact or visual output.
-9. Verify facts, sources, layout, responsiveness, readability, and whether the design is actually good.
+4. Extract and rank source-to-visual entities.
+5. Choose output mode: static, interactive, motion, photo-led, diagram-led, map-led, chart-led, or mixed.
+6. For map-like visuals, choose real map mode or schematic mode.
+7. Consider at least two different art directions and choose the one that best fits the topic.
+8. Gather topic-native facts, imagery ideas, visual motifs, colours, textures, and layout references.
+9. Design the infographic around those references with a clear hierarchy and density budget.
+10. Build the artifact or visual output.
+11. Render and inspect the result visually before finalizing.
+12. Verify facts, sources, layout, responsiveness, readability, and whether the design is actually good.
+
+## Rendered Self-Review Requirement
+
+For generated visual artifacts, inspect the rendered output before finalizing whenever the environment allows it. Use screenshot/browser review for coded visuals.
+
+Check desktop and mobile when feasible:
+- main subject obvious in five seconds,
+- no overlapping text,
+- no cramped labels,
+- no clipped content,
+- no large empty dead space,
+- clear focal point,
+- readable type,
+- useful hierarchy,
+- source-grounded visuals,
+- controls, if present, meaningfully improve understanding.
+
+If the screenshot fails any major check, revise before answering.
 
 ## Final Gate
 
@@ -242,6 +375,10 @@ Before finalizing, reject and redesign if:
 - the layout feels like the same repeated template,
 - the design is ugly, cramped, illegible, generic, or unrelated to the topic,
 - the output is mostly cards, controls, labels, and empty geometry,
+- the user cannot understand the main idea in five seconds,
+- labels overlap or compete with the focal point,
+- map-like geometry is not either geographically faithful or clearly marked schematic,
+- Canvas/SVG is used as decorative filler,
 - the topic would be more effectively shown through photos, maps, charts, or editorial design and those were not considered.
 
 The final result should feel like someone thought: "What is this topic, what would make it visually memorable, and what medium makes it clear?"
